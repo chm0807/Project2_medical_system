@@ -1,12 +1,11 @@
 from fastapi import APIRouter, HTTPException
 from models import DoctorCreate, PatientCreate, AppointmentCreate, PrescriptionCreate, MedicationCreate
-from db_connection import get_db_connection
+from app_streamlit.db_connection import get_db_connection
 from typing import List
 import mysql.connector
 
 router = APIRouter()
 
-# Listar doctores
 @router.get("/doctors/", response_model=List[DoctorCreate])
 def list_doctors():
     conn = get_db_connection()
@@ -22,7 +21,6 @@ def list_doctors():
         cursor.close()
         conn.close()
 
-# Crear un nuevo doctor
 @router.post("/doctors/", response_model=DoctorCreate)
 def create_doctor(doctor: DoctorCreate):
     conn = get_db_connection()
@@ -49,7 +47,6 @@ def create_doctor(doctor: DoctorCreate):
         cursor.close()
         conn.close()
 
-# Listar pacientes
 @router.get("/patients/", response_model=List[PatientCreate])
 def list_patients():
     conn = get_db_connection()
@@ -65,7 +62,6 @@ def list_patients():
         cursor.close()
         conn.close()
 
-# Crear un nuevo paciente
 @router.post("/patients/", response_model=PatientCreate)
 def create_patient(patient: PatientCreate):
     conn = get_db_connection()
@@ -92,7 +88,6 @@ def create_patient(patient: PatientCreate):
         cursor.close()
         conn.close()
 
-# Listar citas
 @router.get("/appointments/", response_model=List[AppointmentCreate])
 def list_appointments():
     conn = get_db_connection()
@@ -108,7 +103,6 @@ def list_appointments():
         cursor.close()
         conn.close()
 
-# Crear una nueva cita
 @router.post("/appointments/", response_model=AppointmentCreate)
 def create_appointment(appointment: AppointmentCreate):
     conn = get_db_connection()
@@ -135,7 +129,6 @@ def create_appointment(appointment: AppointmentCreate):
         cursor.close()
         conn.close()
 
-# Listar medicamentos
 @router.get("/medications/", response_model=List[MedicationCreate])
 def list_medications():
     conn = get_db_connection()
@@ -151,7 +144,6 @@ def list_medications():
         cursor.close()
         conn.close()
 
-# Crear un nuevo medicamento
 @router.post("/medications/", response_model=MedicationCreate)
 def create_medication(medication: MedicationCreate):
     conn = get_db_connection()
@@ -166,7 +158,7 @@ def create_medication(medication: MedicationCreate):
         
         cursor.execute(query, values)
         conn.commit()
-        
+
         new_medication_id = cursor.lastrowid
         medication.medication_id = new_medication_id
         return medication
@@ -178,7 +170,6 @@ def create_medication(medication: MedicationCreate):
         cursor.close()
         conn.close()
 
-# Crear una nueva receta
 @router.post("/prescriptions/", response_model=PrescriptionCreate)
 def create_prescription(prescription: PrescriptionCreate):
     conn = get_db_connection()
