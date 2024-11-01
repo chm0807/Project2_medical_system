@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
-from models import DoctorCreate, PatientCreate, AppointmentCreate, PrescriptionCreate, MedicationCreate
-from app_streamlit.db_connection import get_db_connection
+from app.models import DoctorCreate, PatientCreate, AppointmentCreate, PrescriptionCreate, MedicationCreate
+from db_connection import get_db_connection
 from typing import List
 import mysql.connector
 
