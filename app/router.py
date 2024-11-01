@@ -192,6 +192,7 @@ def create_prescription(prescription: PrescriptionCreate):
     except mysql.connector.Error as e:
         conn.rollback()
         raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
+    
     finally:
         cursor.close()
         conn.close()

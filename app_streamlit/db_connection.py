@@ -30,6 +30,7 @@ def execute_query(query, params=None):
         cursor = connection.cursor()
         cursor.execute(query, params)
         connection.commit()
+        
     except Error as e:
         print(f"Error executing query: {e}")
     finally:

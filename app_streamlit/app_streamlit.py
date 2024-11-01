@@ -5,13 +5,11 @@ from db_connection import fetch_all, execute_query
 st.title("Medical Management System")
 st.sidebar.header("Menu")
 
-# Menú de visualización
 view_menu = st.sidebar.selectbox(
     "Select an option:",
     ["Doctors", "Patients", "Appointments", "Patient Prescriptions"]
 )
 
-# Menú de adición
 add_menu = st.sidebar.selectbox(
     "Add New:",
     ["Add Doctor", "Add Patient", "Add Medication", "Create Prescription", "Create Appointment"]
@@ -131,7 +129,6 @@ def create_appointment():
         )
         st.success("Appointment created successfully!")
 
-# Cargar vistas de acuerdo al menú
 if view_menu == "Doctors":
     show_doctors()
 elif view_menu == "Patients":
@@ -141,7 +138,6 @@ elif view_menu == "Appointments":
 elif view_menu == "Patient Prescriptions":
     show_prescriptions()
 
-# Cargar opciones para añadir
 if add_menu == "Add Doctor":
     add_doctor()
 elif add_menu == "Add Patient":

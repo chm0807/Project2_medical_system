@@ -7,4 +7,5 @@ app.include_router(router)
 
 @app.get("/")
 def read_root():
+    
     return {"message": "Welcome to the Medical Appointments Service"}

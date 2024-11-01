@@ -8,7 +8,7 @@ def get_db_connection():
         connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="",  # Cambia esto si tienes una contraseña
+            password="",
             database=" medical_appointments_service",
             port=3308
         )
@@ -55,7 +55,7 @@ def main():
     if doctors:
         print("Doctores recuperados con éxito:")
         for doctor in doctors:
-            print(doctor)  # Imprimir la información de cada doctor
+            print(doctor)
     else:
         print("No se encontraron doctores o ocurrió un error.")
 
